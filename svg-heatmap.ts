@@ -933,18 +933,18 @@ export class SVGHeatmapGenerator {
         // Background
         svg += `<rect width="${bannerWidth}" height="${bannerHeight}" fill="${backgroundColor}"/>`;
 
-        // Username in top left (@rndmcodeguy)
+        // Username in top left (@rndmcodeguy20)
         svg += `
             <text x="60" y="60" 
                   font-family="${this.getFontFamily(fonts.username)}" 
-                  font-size="18" font-weight="600" fill="${headerTextColor}">
-                @${username}
+                  font-size="16" font-weight="600" fill="${headerTextColor}">
+                @${username}20
             </text>
         `;
 
         // Main header text "Software engineer" - positioned more to the right
         svg += `
-            <text x="60" y="160" 
+            <text x="60" y="130" 
                   font-family="${this.getFontFamily(fonts.headerText)}" 
                   font-size="48" font-weight="700" fill="${headerTextColor}">
                 ${headerText}
@@ -953,7 +953,7 @@ export class SVGHeatmapGenerator {
 
         // Subheading with opacity - positioned below header, also moved to the right
         svg += `
-            <text x="60" y="200" 
+            <text x="60" y="170" 
                   font-family="${this.getFontFamily(fonts.subheaderText)}" 
                   font-size="18" font-weight="400" fill="${subTextColor}" opacity="${subTextOpacity}">
                 ${subText}
@@ -966,29 +966,29 @@ export class SVGHeatmapGenerator {
         //     </g>
         // `;
 
-        this.svgLogos.forEach((logo, index) => {
-            const col = index % 5;  // Column position (0-4)
-            const row = Math.floor(index / 5);  // Row position (0, 1, 2, ...)
+        //     this.svgLogos.forEach((logo, index) => {
+        //         const col = index % 5;  // Column position (0-4)
+        //         const row = Math.floor(index / 5);  // Row position (0, 1, 2, ...)
 
-            // Calculate position
-            const logoSize = 32;
-            const logoSpacing = 60;
-            const rowSpacing = 40;
+        //         // Calculate position
+        //         const logoSize = 32;
+        //         const logoSpacing = 60;
+        //         const rowSpacing = 40;
 
-            // Center the entire grid
-            const totalGridWidth = 4 * logoSpacing; // 4 gaps between 5 logos
-            const startX = centerX - (totalGridWidth / 2);
-            const startY = bannerHeight / 2 - 16; // Center vertically, adjust as needed
+        //         // Center the entire grid
+        //         const totalGridWidth = 4 * logoSpacing; // 4 gaps between 5 logos
+        //         const startX = centerX - (totalGridWidth / 2);
+        //         const startY = bannerHeight / 2 - 16; // Center vertically, adjust as needed
 
-            const x = startX + (col * logoSpacing) + 64;
-            const y = startY + (row * rowSpacing);
+        //         const x = startX + (col * logoSpacing) + 64;
+        //         const y = startY + (row * rowSpacing);
 
-            svg += `
-        <g transform="translate(${x}, ${y})">
-            ${logo}
-        </g>
-    `;
-        });
+        //         svg += `
+        //     <g transform="translate(${x}, ${y})">
+        //         ${logo}
+        //     </g>
+        // `;
+        //     });
 
         // Motivational text in bottom right corner - large, bold, independent positioning
         // Handle multi-line text by splitting on \n characters
