@@ -46,11 +46,22 @@ async function createMyCustomLinkedInBanner() {
                     fallback: "-apple-system, BlinkMacSystemFont, sans-serif"
                 },
                 motivationalText: {
+                    // weight: 900,
+                    // family: "Urbanist",
+                    // url: "https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap",
+                    // fallback: "-apple-system, BlinkMacSystemFont, sans-serif"
+                    // weight: 500,
+                    // family: "Barlow",
+                    // url: "https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap",
+                    // fallback: "-apple-system, BlinkMacSystemFont, sans-serif"
                     weight: 900,
-                    family: "Urbanist",
-                    url: "https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap",
+                    family: "Alumni Sans Pinstripe",
+                    url: "https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap",
                     fallback: "-apple-system, BlinkMacSystemFont, sans-serif"
-
+                    // weight: 900,
+                    // family: "Lexend Deca",
+                    // url: "https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap",
+                    // fallback: "-apple-system, BlinkMacSystemFont, sans-serif"
                 }
                 // Note: subheaderText and motivationalText will use default system fonts
                 // You can add them here too if you want custom fonts for those elements
@@ -61,8 +72,16 @@ async function createMyCustomLinkedInBanner() {
                     url: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
                 },
                 {
-                    family: "Inter",
-                    url: "https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap"
+                    family: "Urbanist",
+                    url: "https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+                },
+                {
+                    family: "Barlow",
+                    url: "https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+                },
+                {
+                    family: "Alumni Sans Pinstripe",
+                    url: "https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap"
                 }
             ]
         });
@@ -70,9 +89,19 @@ async function createMyCustomLinkedInBanner() {
         // Save SVG
         svgGenerator.saveSVGToFile(customBanner, "rndmcodeguy-linkedin-banner.svg");
 
-        // Try to convert to PNG for better LinkedIn compatibility
+        // Generate high-quality PNG files
         try {
+            // Standard quality PNG
             await svgGenerator.convertToPNG("rndmcodeguy-linkedin-banner.svg", "rndmcodeguy-linkedin-banner.png");
+
+            // High-quality PNG (2x resolution for crisp display)
+            await svgGenerator.convertToHighQualityPNG("rndmcodeguy-linkedin-banner.svg", "rndmcodeguy-linkedin-banner-hq.png", 2);
+
+            // Ultra high-quality PNG (3x resolution for print quality)
+            await svgGenerator.convertToPNG("rndmcodeguy-linkedin-banner.svg", "rndmcodeguy-linkedin-banner-ultra.png", {
+                quality: 100,
+                scale: 3
+            });
         } catch (error) {
             console.log("⚠️  Install Sharp for PNG conversion: bun add sharp");
         }
@@ -80,7 +109,10 @@ async function createMyCustomLinkedInBanner() {
         console.log("🎯 Your custom LinkedIn banner is ready!");
         console.log("📁 Files created:");
         console.log("   • rndmcodeguy-linkedin-banner.svg");
-        console.log("   • rndmcodeguy-linkedin-banner.png (if Sharp is installed)");
+        console.log("   • rndmcodeguy-linkedin-banner.png (standard quality)");
+        console.log("   • rndmcodeguy-linkedin-banner-hq.png (high quality - 2x resolution)");
+        console.log("   • rndmcodeguy-linkedin-banner-ultra.png (ultra quality - 3x resolution)");
+        console.log("💡 Recommended: Use the -hq.png version for LinkedIn upload");
 
         console.log("\n✨ Banner specifications:");
         console.log("   📐 Dimensions: 1584x396px (perfect for LinkedIn)");
