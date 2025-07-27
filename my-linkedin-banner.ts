@@ -1,5 +1,5 @@
 import { GitHubContributionFetcher } from "./index";
-import { SVGHeatmapGenerator, createHeatmapData } from "./svg-heatmap";
+import { SVGHeatmapGenerator, createHeatmapData } from "./heatmap";
 
 async function createMyCustomLinkedInBanner() {
     const fetcher = new GitHubContributionFetcher(process.env.GITHUB_TOKEN);
@@ -19,7 +19,7 @@ async function createMyCustomLinkedInBanner() {
         const customBanner = svgGenerator.generateCustomLinkedInBanner(heatmapData, {
             username: "rndmcodeguy",
             headerText: "Software Engineer",
-            subText: "Building refined user interfaces and the solid infrastructure that supports them",
+            subText: "Building refined user interfaces \nand the solid infrastructure that supports them",
             motivationalText: "Patience\nPerseverance\nDedication",
             backgroundColor: "#fff",
             headerTextColor: "#000",
@@ -50,18 +50,22 @@ async function createMyCustomLinkedInBanner() {
                     // family: "Urbanist",
                     // url: "https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap",
                     // fallback: "-apple-system, BlinkMacSystemFont, sans-serif"
-                    // weight: 500,
+                    // weight: 100,
                     // family: "Barlow",
                     // url: "https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap",
                     // fallback: "-apple-system, BlinkMacSystemFont, sans-serif"
-                    weight: 900,
-                    family: "Alumni Sans Pinstripe",
-                    url: "https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap",
-                    fallback: "-apple-system, BlinkMacSystemFont, sans-serif"
+                    // weight: 900,
+                    // family: "Alumni Sans Pinstripe",
+                    // url: "https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap",
+                    // fallback: "-apple-system, BlinkMacSystemFont, sans-serif"
                     // weight: 900,
                     // family: "Lexend Deca",
                     // url: "https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap",
                     // fallback: "-apple-system, BlinkMacSystemFont, sans-serif"
+                    weight: 400,
+                    family: "Rubik",
+                    url: "https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap",
+                    fallback: "-apple-system, BlinkMacSystemFont, sans-serif"
                 }
                 // Note: subheaderText and motivationalText will use default system fonts
                 // You can add them here too if you want custom fonts for those elements

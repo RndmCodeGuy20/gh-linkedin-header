@@ -1,8 +1,27 @@
 {
-  "name": "gh-heatmap",
-  "module": "index.ts",
+  "name": "linkedin-banner-generator",
+  "version": "1.0.0",
+  "description": "Generate custom LinkedIn banners with GitHub contribution heatmaps",
+  "main": "my-linkedin-banner.ts",
+  "module": "my-linkedin-banner.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "start": "bun run my-linkedin-banner.ts",
+    "build": "bun run my-linkedin-banner.ts",
+    "demo": "bun run my-linkedin-banner.ts"
+  },
+  "keywords": [
+    "linkedin",
+    "banner",
+    "github",
+    "heatmap",
+    "contributions",
+    "svg",
+    "typescript"
+  ],
+  "author": "rndmcodeguy20",
+  "license": "MIT",
   "devDependencies": {
     "@types/bun": "latest"
   },

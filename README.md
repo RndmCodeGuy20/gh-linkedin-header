@@ -1,17 +1,17 @@
-# GitHub Contribution Heatmap Generator
+# LinkedIn Banner Generator
 
-A TypeScript project that fetches GitHub contribution data using Octokit and generates beautiful SVG heatmaps similar to GitHub's contribution graph.
+A TypeScript project that fetches GitHub contribution data and generates custom LinkedIn banners with GitHub contribution heatmaps.
 
 ## Features
 
-- 🔥 **Fetch Real Data**: Uses GitHub's GraphQL API to get authentic contribution data
-- 🎨 **Multiple Color Schemes**: GitHub, Green, Blue, Purple, and Orange themes
-- 🎯 **Customizable**: Adjust cell size, padding, labels, and tooltips
-- 📊 **Rich Statistics**: Get streaks, averages, and detailed analytics
-- 💾 **SVG Output**: Clean, scalable vector graphics that work everywhere
+- 🔥 **Real GitHub Data**: Fetches authentic contribution data using GitHub's GraphQL API
+- 🎨 **Custom LinkedIn Banners**: Generate professional banners with heatmaps
+- 🎯 **Fully Customizable**: Adjust colors, fonts, text, and layout
+- � **Perfect Dimensions**: Optimized for LinkedIn's 1584x396px banner size
+- 💾 **Multiple Formats**: Generate SVG and high-quality PNG outputs
 - 🛠 **TypeScript**: Fully typed for better development experience
 
-## Setup
+## Quick Start
 
 1. **Install dependencies**:
    ```bash
@@ -26,27 +26,20 @@ A TypeScript project that fetches GitHub contribution data using Octokit and gen
 
    Get your token at: https://github.com/settings/tokens (needs `read:user` scope)
 
+3. **Generate your LinkedIn banner**:
+   ```bash
+   bun run my-linkedin-banner.ts
+   ```
+
 ## Usage
 
-### Basic Usage
+### Generate LinkedIn Banner
 
 ```typescript
-import { GitHubContributionFetcher } from "./index";
-import { SVGHeatmapGenerator, createHeatmapData } from "./svg-heatmap";
+import { createMyCustomLinkedInBanner } from "./my-linkedin-banner";
 
-async function generateHeatmap() {
-  const fetcher = new GitHubContributionFetcher(process.env.GITHUB_TOKEN);
-  const svgGenerator = new SVGHeatmapGenerator();
-
-  // Fetch contribution data
-  const contributionData = await fetcher.fetchContributionData("username");
-  const processedData = fetcher.processContributionDataForHeatmap(contributionData);
-  
-  // Create heatmap data
-  const heatmapData = createHeatmapData(processedData, "username");
-  
-  // Generate SVG
-  const svg = svgGenerator.generateSVG(heatmapData);
+// Generate your custom LinkedIn banner
+await createMyCustomLinkedInBanner();
   
   // Save to file
   svgGenerator.saveSVGToFile(svg, "heatmap.svg");
@@ -55,59 +48,61 @@ async function generateHeatmap() {
 
 ### Custom Styling
 
+```
+
+### Customization Options
+
 ```typescript
-// Custom options
-const svg = svgGenerator.generateSVG(heatmapData, {
-  cellSize: 15,           // Size of each square
-  cellPadding: 3,         // Space between squares
-  showTooltips: true,     // Enable hover tooltips
-  showMonthLabels: true,  // Show month names
-  showDayLabels: true,    // Show day names (Mon, Wed, Fri)
-  colors: ['#f0f9ff', '#bfdbfe', '#60a5fa', '#3b82f6', '#1d4ed8'], // Custom colors
+const customBanner = svgGenerator.generateCustomLinkedInBanner(heatmapData, {
+    username: "your-username",
+    headerText: "Software Engineer",
+    subText: "Building amazing things with code",
+    motivationalText: "Passion\nPerseverance\nProgress",
+    backgroundColor: "#fff",
+    headerTextColor: "#000",
+    subTextColor: "#000",
+    subTextOpacity: 0.54,
+    motivationalTextColor: "#000",
+    heatmapTheme: 'dark',
+    // Custom fonts
+    fonts: {
+        username: {
+            family: "JetBrains Mono",
+            url: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap",
+            fallback: "Consolas, Monaco, monospace"
+        }
+        // ... more font configurations
+    }
 });
 ```
 
-### Color Schemes
+## Project Structure
 
-```typescript
-// Use predefined color schemes
-const schemes = ['github', 'green', 'blue', 'purple', 'orange'];
-
-schemes.forEach(scheme => {
-  const svg = svgGenerator.generateCustomColorHeatmap(heatmapData, scheme);
-  svgGenerator.saveSVGToFile(svg, `heatmap-${scheme}.svg`);
-});
+```
+gh-heatmap/
+├── my-linkedin-banner.ts    # Main banner generation script
+├── svg-heatmap.ts          # SVG heatmap generator class
+├── index.ts                # GitHub data fetching utilities
+├── logos.ts                # Tech logos for banners
+├── fonts/                  # Custom font files
+├── package.json            # Dependencies
+├── tsconfig.json           # TypeScript configuration
+├── .env.example           # Environment variables template
+└── README.md              # This file
 ```
 
-## Run Examples
+## Generated Files
 
-```bash
-# Run the main example with real GitHub data
-bun run example.ts
+When you run the banner generator, it creates:
+- `rndmcodeguy-linkedin-banner.svg` - Vector format
+- `rndmcodeguy-linkedin-banner.png` - Standard quality PNG
+- `rndmcodeguy-linkedin-banner-hq.png` - High quality PNG (recommended for LinkedIn)
+- `rndmcodeguy-linkedin-banner-ultra.png` - Ultra high quality PNG
 
-# Generate sample heatmaps with demo data  
-bun run demo.ts
+## Requirements
 
-# Run the basic index file
-bun run index.ts
-```
-
-## Key Files
-
-- `index.ts` - Core GitHub data fetching functionality
-- `svg-heatmap.ts` - SVG heatmap generation
-- `example.ts` - Example with real GitHub data
-- `demo.ts` - Generate sample heatmaps with demo data
-
-## Output
-
-The SVG heatmaps include:
-- ✅ Contribution squares with proper colors
-- ✅ Month labels (Jan, Feb, Mar...)
-- ✅ Day labels (Mon, Wed, Fri)
-- ✅ Tooltips with contribution details
-- ✅ Legend showing contribution levels
-- ✅ Summary text with total contributions
-- ✅ Responsive and scalable design
+- Bun runtime
+- GitHub personal access token (for real data)
+- Sharp package (optional, for PNG conversion)
 
 This project was created using `bun init` in bun v1.2.13. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
